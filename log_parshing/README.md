@@ -1,123 +1,99 @@
-Log Parsing Utility
+# Log Parsing Utility - v1.01
 
-Overview
+## Description
 
-This Log Parsing Utility is a Python-based command-line tool designed to analyze and filter log files effectively. It provides various options for extracting information such as timestamps, IPv4 and IPv6 addresses, and specific lines from the log files. The tool is complemented with a robust test suite to ensure functionality and reliability.
+This Python CLI application is designed to help you parse log files efficiently. 
+The tool supports various filtering options, such as printing the first or last N lines, filtering lines containing IPv4 or IPv6 addresses, 
+and extracting lines with timestamps. The application is easy to deploy and run, with a test suite included to ensure correctness.
 
-Features
+This solution does not use the `head`, `tail`, or `grep` utilities and relies on custom Python functions to perform the required parsing. 
+It supports multiple filtering options, allowing you to refine your log analysis.
 
-Extract and display lines containing:
+## Features
 
-Timestamps in HH:MM:SS format
+- **Print the first N lines** of a log file
+- **Print the last N lines** of a log file
+- **Filter lines containing a timestamp** in HH:MM:SS format
+- **Filter lines containing an IPv4 address**
+- **Filter lines containing an IPv6 address**
+- **Command-line interface** with user-friendly options
+- **Supports multiple filters** at once, yielding the intersection of their results
 
-IPv4 addresses
+## Usage
 
-IPv6 addresses
+### Installation and Setup
 
-Display the first or last N lines from the log file
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/username/log-parsing-utility.git
+   
+   cd log-parsing-utility
 
-Modular design for easy integration and extension
+2. **Create a virtual environment** (recommended to avoid conflicts with system packages)
 
-Prerequisites
+        python3 -m venv venv
 
-Python 3.8 or above
+3.**Activate the virtual environment**
 
-Setup and Installation
+    	On Windows:
+    		venv\Scripts\activate
+    	
+    	On macOS/Linux:
+    		source venv/bin/activate
+		
+4. **Install dependencies**
 
-Clone the repository:
+	    pip install -r requirements.txt
+	
+##  Available Options
 
-git clone <repository-url>
-cd log_parshing-utility
+    -f, --first N       Print the first N lines from the log file.
+    
+    -l, --last N	    Print the last N lines from the log file.
+   
+    -t, --timestamps	Print lines containing timestamps in HH:MM:SS format.
+    
+    -i, --ipv4	        Print lines containing IPv4 addresses.
+    
+    -I, --ipv6	        Print lines containing IPv6 addresses.
 
-Create a virtual environment:
 
-python -m venv log_parshing
-source log_parshing/bin/activate  # On Windows: log_parshing\Scripts\activate
+### Example Usage
+	
+     Display help                                               ./util.py -h.
+    
+     Print the first 10 lines of log file**                     type <log file> | ./util.py --first 10 [type for command prompt]
+     
+     Print the last 5 lines of log file                         ./util.py --last 5 <log file>
+     
+     Print lines containing timestamps from log file            ./util.py --timestamps <log file>
+     
+     Print lines containing IPv4 addresses from log file        ./util.py --ipv4 <log file> /
+     
+     Print lines containing IPv6 addresses from log file        ./util.py -I/--ipv6 <log file>
+		
 
-Install the required dependencies:
+     Multiple Options
+	    Print the last 5 lines containing IPv4 addresses from log file        ./util.py -i/--ipv4 --last 50 <log file>
 
-pip install -r requirements.txt
+###    Code Structure
+    
+    log_parshing-utility/
+		|-- log_parshing/
+			|-- util.py				     
+			|-- test_util.py		     
+			|-- Sample.log			    
+			|-- README.md             
+		|-- requirements.txt		   
 
-Ensure the following directory structure:
-
-log_parshing-utility/
-|-- log_parshing/
-    |-- util.py
-    |-- test_util.py
-    |-- Sample.log
-    |-- requirements.txt
-
-Usage
-
-Run the utility with the desired options:
-
-python util.py [OPTIONS] Sample.log
-
-Command-line Options:
-
---first NUM     : Display the first NUM lines from the log file.
-
---last NUM      : Display the last NUM lines from the log file.
-
---timestamps    : Display lines containing timestamps in HH:MM:SS format.
-
---ipv4          : Display lines containing IPv4 addresses.
-
---ipv6          : Display lines containing IPv6 addresses.
-
-Examples:
-
-Display the first 5 lines of the log file:
-
-python util.py --first 5 Sample.log
-
-Extract lines with IPv4 addresses:
-
-python util.py --ipv4 Sample.log
-
-Extract lines containing timestamps:
-
-python util.py --timestamps Sample.log
-
-Testing
-
-Automated tests are provided using pytest. To execute the tests:
-
-pytest -s test_util.py
-
-Sample Test Output
-
-Sample outputs for various test cases are included in the test_util.py script. Below is an example test case:
-
-Testing the --ipv4 option:
-
-python util.py --ipv4 Sample.log
-
-Expected Output:
-
-2024-12-14 10:20:00 - INFO - User login attempt - IP: 192.168.1.1
-2024-12-14 10:21:05 - ERROR - Invalid login attempt - IP: 192.168.1.2
-
-File Descriptions
-
-util.py
-
-The main script for parsing log files with flexible options to filter data based on user input.
-
-test_util.py
-
-Comprehensive test suite to validate the functionality of util.py using pytest.
-
-Sample.log
-
-A sample log file for testing and demonstration purposes.
-
-requirements.txt
-
-Contains the Python dependencies required for the project.
-
-Notes
-
-Ensure the virtual environment is activated when running the utility or tests.
-
-If modifying the requirements.txt file, include only the explicitly installed dependencies to avoid bloating.
+### Testing
+    **Run the test suite using `pytest`**
+        pytest -s test_util.py
+            
+    **Expected output**
+        All tests should pass with details of execution.
+	
+## Error Handling
+1. **Invalid Arguments**: Displays an error message and exits.
+2. **Conflicting Options**: Prompts the user to resolve conflicts, such as using both `--first` and `--last`.
+3. **Empty Input**: Alerts the user if no log data is provided.
