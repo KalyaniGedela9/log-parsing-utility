@@ -95,3 +95,8 @@ It supports multiple filtering options, allowing you to refine your log analysis
 1. **Invalid Arguments**: Displays an error message and exits.
 2. **Conflicting Options**: Prompts the user to resolve conflicts, such as using both `--first` and `--last`.
 3. **Empty Input**: Alerts the user if no log data is provided.
+
+
+### Sample Log File
+A sample log file is provided for testing purposes. You can find it in the repository under the filename **Sample.log.** 
+Use this file to test and explore the functionality of the log parsing utility.
