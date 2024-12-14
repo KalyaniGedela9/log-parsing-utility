@@ -79,7 +79,7 @@ def get_last_n_lines(lines, num):
     """
     return lines[-num:]
 
-# Other functions omitted for brevity, but follow the same docstring format
+
 
 def main():
     """
