@@ -85,7 +85,13 @@ It supports multiple filtering options, allowing you to refine your log analysis
 			  |-- util.py				     
 			  |-- test_util.py		     
 			  |-- Sample.log			    
-	  |-- requirements.txt		   
+	  |-- requirements.txt		
+
+ **Notes on File Placement**
+- Ensure that `util.py` and `test_util.py` are in the same folder when running the tests. This is because `test_util.py` references `util.py` without explicitly importing it using a module path.
+- If you want to place these files in different directories, adjust the import statements in `test_util.py` to correctly reference `util.py`. For example:
+  ```python
+  from <relative_or_absolute_path>.util import <required_function>
 
 ### Testing
     **Run the test suite using `pytest`**
