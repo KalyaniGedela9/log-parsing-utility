@@ -41,7 +41,7 @@ It supports multiple filtering options, allowing you to refine your log analysis
     	On macOS/Linux:
     		source venv/bin/activate
 		
-4. **Install dependencies**
+4. **Install dependencies**[Optional]
 
 	    pip install -r requirements.txt
 
