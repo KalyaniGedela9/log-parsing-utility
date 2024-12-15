@@ -44,6 +44,9 @@ It supports multiple filtering options, allowing you to refine your log analysis
 4. **Install dependencies**
 
 	    pip install -r requirements.txt
+
+**Note:**
+	Optimizing **requirements.txt** If you encounter unnecessary or unused dependencies in requirements.txt, you can clean it by identifying and including only the required libraries.
 	
 ##  Available Options
 
