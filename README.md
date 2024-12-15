@@ -25,7 +25,7 @@ It supports multiple filtering options, allowing you to refine your log analysis
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/username/log-parsing-utility.git
+   git clone https://github.com/KalyaniGedela9/log-parsing-utility.git
    
    cd log-parsing-utility
 
